@@ -15,8 +15,8 @@
     --white: #fff;
     --white2: #fff;
     --border-color: rgba(0, 0, 0, .05);
-    --z-header:99999;
-    --z-navigation:100000;
+    --z-header: 99999;
+    --z-navigation: 100000;
 }
 
 body {
@@ -58,7 +58,7 @@ body {
     position: relative;
     display: block;
     width: 100%;
-    margin: 10px 0;
+    margin: 20px 0;
     white-space: normal;
     text-transform: uppercase;
     text-decoration: none;
@@ -68,11 +68,12 @@ body {
     opacity: .5;
 }
 
-.navigation ul li a:hover {
+.navigation ul li a:hover,
+.navigation ul li a.active {
     opacity: 1;
 }
 
-.content {
+.main {
     flex: 1;
     min-height: 100vh;
     display: flex;
@@ -81,8 +82,8 @@ body {
     background: var(--white2);
 }
 
-.content header,
-.content footer {
+.main header,
+.main footer {
     min-height: 60px;
     padding: 0 40px;
     z-index: var(--z-header);
@@ -91,11 +92,11 @@ body {
     align-items: center;
 }
 
-.content header {
+.main header {
     border-bottom: 1px solid var(--border-color);
 }
 
-.content header .logo {
+.main header .logo {
     color: var(--black);
     font-size: 1.4em;
     font-weight: 700;
@@ -104,7 +105,7 @@ body {
     letter-spacing: 1px;
 }
 
-.content header .toggle {
+.main header .toggle {
     display: none;
     position: relative;
     width: 60px;
@@ -116,25 +117,26 @@ body {
     color: var(--black);
 }
 
-.content footer {
+.main footer {
     border-top: 1px solid var(--border-color);
 }
 
-.content footer p.copyright {
+.main footer p.copyright {
     font-size: .8em;
 }
 
-.content footer .socialMedia {
+.main footer .socialMedia {
     display: flex;
 }
 
-.content footer .socialMedia li {
+.main footer .socialMedia li {
     list-style: none;
 }
-.content footer .socialMedia li a {
+
+.main footer .socialMedia li a {
     width: 40px;
     height: 40px;
-    background: rgba(0,0,0,.05);
+    background: rgba(0, 0, 0, .05);
     margin: 5px;
     display: flex;
     justify-content: center;
@@ -143,14 +145,13 @@ body {
     color: var(--black);
 }
 
-.content footer .socialMedia li a:hover {
+.main footer .socialMedia li a:hover {
     background: var(--black);
     color: var(--white);
 }
 
 
-
-.content main {
+.main main {
     position: relative;
     flex: 1;
     display: flex;
@@ -159,7 +160,7 @@ body {
     padding: 20px 40px;
 }
 
-.content main .logo {
+.main main .logo {
     margin: 0 auto;
     max-width: 512px;
     width: 100%;
@@ -171,15 +172,20 @@ body {
     color: var(--primary);
 }
 
-.content main.home {
+.main main .logo .inner-box {
+    fill: currentColor;
+}
+
+.main main.home {
     margin: 0 auto;
     max-width: 640px;
     width: 100%;
     text-align: center;
 }
 
-.inner-box {
-    fill: currentColor;
+.main main.projects {
+    justify-content: start;
+
 }
 
 h3 {
@@ -196,8 +202,63 @@ p {
     color: #777;
 }
 
+.projects .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.projects .content .work {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.projects .content .work .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
+    transition: 0.5s ease-in-out;
+}
+
+.projects .content .work:hover .image {
+    transform: translateY(-100%);
+}
+
+.projects .content .work .image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.projects .content .work .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+    transition: 0.5s ease-in-out;
+}
+
+.projects .content .work:hover .text {
+    transform: translateY(0);
+}
+.projects .content .work:hover .text h3 {
+    color: var(--white);
+}
+
+
 @media (max-width: 992px) {
-    .content header .toggle {
+    .main header .toggle {
         display: flex;
     }
 
@@ -205,7 +266,7 @@ p {
         position: fixed;
         left: -100%;
         background: #fff;
-        box-shadow: 2px 0 16px rgba(0,0,0,.3);
+        box-shadow: 2px 0 16px rgba(0, 0, 0, .3);
         overflow: unset !important;
         z-index: var(--z-navigation) !important;
         transition: left .5s !important;
@@ -215,9 +276,9 @@ p {
         left: 0;
     }
 
-    .content header,
-    .content footer,
-    .content main {
+    .main header,
+    .main footer,
+    .main main {
         padding: 0 12px;
     }
 }
