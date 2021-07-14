@@ -1,0 +1,26 @@
+.main main.home {
+    margin: 0 auto;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+}
+
+.home .logo {
+    margin: 0 auto;
+    max-width: 512px;
+    width: 100%;
+    height: auto;
+
+    padding: 32px 0;
+
+    fill: var(--black);
+    color: var(--primary);
+}
+
+.home .logo .inner-box {
+    fill: currentColor;
+}
+
+@media (max-width: 992px) {
+
+}

@@ -13,7 +13,7 @@
     --black2: #333;
     --primary: #C24444;
     --white: #fff;
-    --white2: #fff;
+    --white2: #fafbfc;
     --border-color: rgba(0, 0, 0, .05);
     --z-header: 99999;
     --z-navigation: 100000;
@@ -25,7 +25,7 @@ body {
 
 .container {
     position: relative;
-    display: flex;
+    display: block;
     height: 100vh;
 }
 
@@ -35,6 +35,7 @@ body {
     border-right: 1px solid var(--border-color);
     background: var(--white2);
     display: flex;
+    position: fixed;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -42,10 +43,8 @@ body {
 
 .navigation ul {
     position: relative;
-    width: 100%;
-    min-width: var(--width-navigation);
+    width: var(--width-navigation);
     padding: 20px 40px;
-
 }
 
 .navigation ul li {
@@ -74,12 +73,15 @@ body {
 }
 
 .main {
-    flex: 1;
     min-height: 100vh;
+    left: var(--width-navigation);
+    right: 0;
+    top: 0;
+    position: absolute;
     display: flex;
     align-items: stretch;
     flex-direction: column;
-    background: var(--white2);
+    background: var(--white);
 }
 
 .main header,
@@ -90,6 +92,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--white2);
 }
 
 .main header {
@@ -160,34 +163,6 @@ body {
     padding: 20px 40px;
 }
 
-.main main .logo {
-    margin: 0 auto;
-    max-width: 512px;
-    width: 100%;
-    height: auto;
-
-    padding: 32px 0;
-
-    fill: var(--black);
-    color: var(--primary);
-}
-
-.main main .logo .inner-box {
-    fill: currentColor;
-}
-
-.main main.home {
-    margin: 0 auto;
-    max-width: 640px;
-    width: 100%;
-    text-align: center;
-}
-
-.main main.projects {
-    justify-content: start;
-
-}
-
 h3 {
     position: relative;
     margin-bottom: 8px;
@@ -201,61 +176,6 @@ p {
     font-size: 1em;
     color: #777;
 }
-
-.projects .content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-}
-
-.projects .content .work {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.projects .content .work .image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform: translateY(0);
-    transition: 0.5s ease-in-out;
-}
-
-.projects .content .work:hover .image {
-    transform: translateY(-100%);
-}
-
-.projects .content .work .image img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.projects .content .work .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(100%);
-    transition: 0.5s ease-in-out;
-}
-
-.projects .content .work:hover .text {
-    transform: translateY(0);
-}
-.projects .content .work:hover .text h3 {
-    color: var(--white);
-}
-
 
 @media (max-width: 992px) {
     .main header .toggle {
@@ -275,11 +195,17 @@ p {
     .navigation.active {
         left: 0;
     }
+    .main {
+        left: 0;
+    }
 
     .main header,
-    .main footer,
-    .main main {
+    .main footer {
         padding: 0 12px;
+    }
+
+    .main main  {
+        padding: 12px;
     }
 }
 
