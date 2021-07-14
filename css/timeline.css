@@ -1,3 +1,6 @@
+.timeline {
+    max-width: 1440px;
+}
 
 .timeline > ul,
 .timeline > ul > li,
@@ -67,7 +70,7 @@
 }
 
 .timeline .timeline-item .text:not(:last-child) {
-    width: 50%;
+    width: 33.33%;
     float: left;
 }
 
@@ -83,7 +86,7 @@
 }
 
 .timeline .timeline-item .image {
-    width: 50%;
+    width: 66.66%;
     padding-left: 30px;
     float: left;
     text-align: center;
@@ -98,4 +101,31 @@
 .timeline .timeline-item .tags>ul>li,
 .timeline .timeline-item .timeline-item-contents {
     overflow: hidden;
+}
+
+@media (max-width: 1440px) {
+    .timeline .timeline-item .text:not(:last-child) {
+        width: 50%;
+    }
+    .timeline .timeline-item .image {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .timeline .timeline-item .image {
+        width: auto;
+        float: none;
+        margin-top: 30px;
+        padding-left: 0;
+    }
+
+    .timeline .timeline-item .text:not(:last-child) {
+        width: auto;
+        float: none;
+    }
+}
+
+@media (max-width: 640px) {
+
 }
